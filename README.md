@@ -8,6 +8,7 @@ Version française plus bas.
 |---|---|---|---|
 | 01 | SOLID principles with everyday examples | [01-solid](01-solid) | Java |
 | 02 | Docker: virtual machine vs container | [02-docker](02-docker) | Python, Docker |
+| 03 | Creational patterns: Singleton, Factory, Builder | [03-creational-patterns](03-creational-patterns) | Java |
 
 New folders are added as the course goes on. If something is wrong or unclear, open an issue, I'd be glad to fix it.
 
