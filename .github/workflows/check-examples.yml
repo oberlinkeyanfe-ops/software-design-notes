@@ -1,0 +1,48 @@
+name: Check examples
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  java:
+    name: Run Java examples
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Run every Java file
+        run: |
+          set -e
+          for file in */src/*.java; do
+            echo "::group::$file"
+            (cd "$(dirname "$file")" && java "$(basename "$file")")
+            echo "::endgroup::"
+          done
+
+  docker:
+    name: Build and run the Docker example
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the image
+        run: docker build -t hello-container 02-docker
+
+      - name: Run the container and call the app
+        run: |
+          set -e
+          docker run -d --name hello -p 5000:5000 hello-container
+          for i in $(seq 1 20); do
+            if curl -sf http://localhost:5000/ > response.json; then break; fi
+            sleep 1
+          done
+          cat response.json
+          grep -q "Hello from inside a container" response.json
+          docker rm -f hello

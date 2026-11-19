@@ -1,5 +1,7 @@
 # Software design notes
 
+[![Check examples](https://github.com/oberlinkeyanfe-ops/software-design-notes/actions/workflows/check-examples.yml/badge.svg)](https://github.com/oberlinkeyanfe-ops/software-design-notes/actions/workflows/check-examples.yml)
+
 Short, runnable examples of what I study in my Master's in Software Engineering (University of Yaoundé I): design principles, design patterns, Docker, microservices. Each folder goes with a post on [LinkedIn](https://www.linkedin.com/in/oberlin-keyanfe).
 
 Version française plus bas.
